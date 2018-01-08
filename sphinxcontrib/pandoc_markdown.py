@@ -299,7 +299,7 @@ class MarkdownParser(Parser):
                 else:
                     f.write(input_string)
 
-            cmdline = "pandoc {} -r markdown -w rst {} -o {}".format(
+            cmdline = "pandoc {} -w rst {} -o {}".format(
                 " ".join(MarkdownParser.PANDOC_OPT),
                 input_dir[1], output_dir[1]
             )
