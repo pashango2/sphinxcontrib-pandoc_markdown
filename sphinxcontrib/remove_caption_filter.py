@@ -18,7 +18,7 @@ import os
 from pandocfilters import toJSONFilter, Image, Link, RawInline
 
 try:
-    import urlparse
+    from urlparse import urlparse
 except ImportError:
     from urllib.parse import urlparse
 
@@ -51,7 +51,7 @@ def remove_caption_filter(key, value, format_, meta):
             [[u'', [], []], [{u'c': u'node', u't': u'Str'}], [u'node_api.md', u'']]
         """
         link_path = value[2][0]
-        if not bool(urlparse.urlparse(link_path).netloc):
+        if not bool(urlparse(link_path).netloc):
             name, ext = os.path.splitext(link_path)
             if ext and ext.lower() == ".md":
                 link_name = value[1][0]["c"]
