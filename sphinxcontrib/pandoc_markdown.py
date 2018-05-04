@@ -275,7 +275,11 @@ class MarkdownParser(Parser):
     def convert(input_string):
         pre_code = []
         _input_string = []
-        for line in input_string.splitlines():
+        try:
+            input_string = input_string.splitlines()
+        except AttributeError:
+            pass
+        for line in input_string:
             if line.startswith(".. |"):
                 pre_code.append(line)
             else:
